@@ -1,0 +1,81 @@
+{
+  "version": 7,
+  "name": "Démo BlockFlow",
+  "blocks": [
+    {
+      "id": "b_demo_set",
+      "type": "set-variable",
+      "name": "texte",
+      "value": {
+        "kind": "literal",
+        "value": "Bonjour !"
+      }
+    },
+    {
+      "id": "b_demo_launch",
+      "type": "launch",
+      "exe": {
+        "kind": "literal",
+        "value": "notepad.exe"
+      }
+    },
+    {
+      "id": "b_demo_waitwindow",
+      "type": "wait-window",
+      "title": {
+        "kind": "literal",
+        "value": "Bloc-notes"
+      },
+      "timeout": {
+        "kind": "literal",
+        "value": 10
+      },
+      "timeoutUnit": "s",
+      "interval": {
+        "kind": "literal",
+        "value": 250
+      },
+      "targetMode": "title",
+      "processName": {
+        "kind": "literal",
+        "value": "notepad"
+      }
+    },
+    {
+      "id": "b_demo_type",
+      "type": "keyboard-type",
+      "text": {
+        "kind": "var",
+        "name": "texte",
+        "literalValue": "Bonjour !"
+      }
+    },
+    {
+      "id": "b_demo_wait",
+      "type": "wait",
+      "duration": {
+        "kind": "literal",
+        "value": 1
+      },
+      "unit": "s"
+    },
+    {
+      "id": "b_demo_hotkey",
+      "type": "keyboard-hotkey",
+      "modifiers": [
+        "CTRL",
+        "",
+        ""
+      ],
+      "key": "A"
+    },
+    {
+      "id": "b_demo_log",
+      "type": "log",
+      "message": {
+        "kind": "literal",
+        "value": "Le texte de la variable a été envoyé."
+      }
+    }
+  ]
+}

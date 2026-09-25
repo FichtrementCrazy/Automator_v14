@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BlockFlow Automator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">◆</div><div><b>BlockFlow</b><span>Automator</span></div></div>
+  <div class="toolbar">
+    <button id="newBtn">Nouveau</button>
+    <button id="openBtn">Ouvrir</button>
+    <button id="saveBtn">Enregistrer JSON</button>
+    <button id="exportBtn">Exporter tâche</button>
+    <button id="undoBtn" title="Ctrl+Z">↶</button>
+    <button id="redoBtn" title="Ctrl+Y">↷</button>
+    <span class="sep"></span>
+    <button class="run" id="runBtn">▶ Exécuter</button>
+    <button class="pause" id="stopBtn">■ Arrêter</button>
+  </div>
+  <div class="status" id="status">Prêt</div>
+</header>
+<main class="layout">
+  <aside class="palette">
+    <div class="panel-title">Blocs</div>
+    <input id="search" placeholder="Rechercher un bloc..." autocomplete="off">
+    <div class="palette-tip">Clique pour ajouter à la fin. Glisse pour choisir précisément l’emplacement.</div>
+    <div id="paletteGroups"></div>
+  </aside>
+  <section class="workspace">
+    <div class="workspace-head">
+      <div class="project-head">
+        <input id="projectName" class="project-name" value="Mon workflow" spellcheck="false" aria-label="Nom du workflow">
+        <span id="dirtyState">Enregistré</span>
+        <span id="blockCount">0 blocs</span>
+      </div>
+      <div class="zoom">Zoom <button id="zoomOut">−</button><span id="zoomValue">100%</span><button id="zoomIn">+</button></div>
+    </div>
+    <div id="canvas" class="canvas">
+      <div class="hint" id="hint"><div class="hint-icon">＋</div><b>Glisse des blocs ici</b><span>Les blocs s’exécutent de haut en bas. Les blocs de contrôle ouvrent des zones où déposer d’autres blocs.</span></div>
+    </div>
+  </section>
+  <aside class="inspector">
+    <div class="panel-title">Inspecteur</div>
+    <div id="inspectorContent" class="empty-inspector">Sélectionne un bloc pour voir sa description.</div>
+    <div class="variables-panel">
+      <div class="console-head"><b>Variables du workflow</b><span id="variableCount">0</span></div>
+      <div id="variableList" class="variable-list"></div>
+    </div>
+    <div class="console">
+      <div class="console-head"><b>Journal</b><button id="clearLog">Effacer</button></div>
+      <pre id="log"></pre>
+    </div>
+  </aside>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

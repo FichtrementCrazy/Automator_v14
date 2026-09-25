@@ -1,0 +1,56 @@
+{
+  "name": "blockflow-automator",
+  "version": "0.6.1",
+  "description": "Automatisation Windows par blocs façon Scratch",
+  "main": "src/main.js",
+  "author": "BlockFlow",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build:win": "electron-builder --win --x64 --publish=never",
+    "build:portable": "electron-builder --win portable --x64 --publish=never",
+    "test:roundtrip": "node tests/json-roundtrip.js"
+  },
+  "devDependencies": {
+    "electron": "44.4.4",
+    "electron-builder": "26.16.1"
+  },
+  "build": {
+    "appId": "com.blockflow.automator",
+    "productName": "BlockFlow Automator",
+    "artifactName": "BlockFlow-Automator-${version}-${arch}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "examples/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
